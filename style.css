@@ -29,12 +29,13 @@
 
 /* LOGO */
 .logo img {
-    height: 40px;
+    height: 50px;
     display: block;
 }
 
 /* MENU HEADER CENTRÉ */
 .nav-menu {
+    list-style:none;   /* 🔥 enlève les points */
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -58,6 +59,7 @@
     display: flex;
     list-style: none;
     gap: 2rem;
+    text-decoration: underline;
 }
 
 .secondary-menu {
@@ -72,7 +74,7 @@
 
 /* === SECTION === */
 .section {
-    padding: 5rem 10px 4rem; /* espace pour le header fixe */
+    padding: 6rem 150px 3rem; /* espace pour le header fixe */
     background-color: #ecf0f1;
     
 }
@@ -95,8 +97,8 @@
 /* === MENU CARD AVEC IMAGE + FILTRE ARRONDI === */
 .menu-card {
     position: relative; /* nécessaire pour ::before */
-    padding: 9rem;
-    border-radius: 15px;
+    padding: 5rem;
+    border-radius: 10px;
     overflow: hidden; /* 🔥 important pour le filtre */
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     background: url("../exercice/carte.jpg") center/cover no-repeat;
@@ -163,9 +165,26 @@
 
 /* CARTE EN HAUT À DROITE */
 .mini-top {
-    top: 135px;
+    top: 85px;
     right: 11rem;
+   /* position: relative; */
+    }
+/* === MINI-TOP AVEC OPACITÉ 15% (SANS FILTRE NOIR) === */
+.mini-top {
+    background: rgba(255, 255, 255, 0.15);
 }
+
+.mini-top::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+
+
 .logotop {
     top: 10px;
     bottom: 5px;
@@ -241,8 +260,8 @@
 }
 
 .boule {
-    width: 13rem;              
-    height: 13rem;
+    width: 9rem;              
+    height: 9rem;
     background-color: #b3b5b8; 
     border-radius: 50%;        
     display: flex;             
@@ -268,18 +287,19 @@
     align-items: center;
     width: 100%;
     margin-top: 4rem;
-    padding: 0 5rem;
+    padding: 0 10rem;
     gap: 2rem;
 }
 
 /* GAUCHE : 50% */
 .quality-left {
     width: 50%;
+    right: 60rem;
 }
 
 .quality-left h2 {
     font-size: 2.5rem;
-    font-weight: 600;
+    font-weight: 100;
     color: #000;
 }
 
@@ -313,3 +333,28 @@
     font-size: 2rem;
     color: #727B84;
 }
+/* === SUPPRIMER LES OMBRES ENTRE 120K / 315 / 6mil === */
+.mini-bottom,
+.mini-btwn,
+.mini-left {
+    box-shadow: none;
+}
+/* === TEXTE MINI-TOP : INTERLIGNE RÉDUIT === */
+.mini-top p {
+    margin: 0;
+    padding-bottom: 0.3rem; /* réduit l’espace vertical */
+    line-height: 1.1;       /* 🔥 interligne serré */
+}
+/* === TEXTE MINI-TOP EN BAS À DROITE === */
+.mini-top a {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* bas */
+    align-items: flex-end;     /* droite */
+    text-align: right;
+}
+.mini-top {
+    backdrop-filter: blur(2px);
+}
+
